@@ -1,0 +1,69 @@
+As the Monk is also taking part in the CodeMonk Series, this week he learned about hashing. Now he wants to practice some problems. So he came up with a simple problem. Firstly, he made a hash function F such that:
+
+F(x) = x % 10
+
+Now using this function he wants to hash N integers and count the number of collisions that will occur while hashing the integers.
+
+Input:
+The first line contains an integer T, denoting the number of test cases.
+The first line of each test case contains an integer N, denoting the number of integers to hash.
+The next line contains N space separated integers, denoting the integer X to hash.
+
+Output:
+For each test case, print the number of collisions that will occur while hashing the integers.
+
+Constraints:
+1 <= T <= 10
+1 <= N <= 100
+0 <= X <= 105
+
+Solution:
+
+/* IMPORTANT: class must not be public. */
+
+/*
+ * uncomment this if you want to read input.
+ */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        /*
+         * Read input from stdin and provide input before running
+ */
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        int T = Integer.parseInt(line);
+        for (int i = 0; i < T; i++) {
+           String line2= br.readLine();
+           int N = Integer.parseInt(line2);
+           
+           int [] arr= new int[100];
+           for(int l = 0; l<100; l++)
+           {
+           	arr[l]=-1;
+           }
+           String line3= br.readLine();
+           
+           String [] str = line3.split(" ");
+           int col =0;
+           for(int k =0; k<N;k++)
+           {
+           		int num = Integer.parseInt(str[k]);
+           		
+           		if(arr[num%10]!=-1)
+           		{
+           			arr[num%10] = num%10;
+           			col++;
+           		}
+           		else
+           		arr[num%10] = num%10;
+           			
+           }
+            System.out.println(col);
+        }
+
+    }
+}
