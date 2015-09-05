@@ -1,0 +1,108 @@
+iven A and B, count the numbers N such that A ≤ N ≤ B and N is a palindrome.
+
+Examples: 
+Palindromes: 121, 11 , 11411 
+Not Palindromes: 122, 10
+
+Input: 
+First line contains T, the number of testcases. Each testcase consists of two integers A and B in one line.
+
+Output: 
+For each testcase, print the required answer in one line.
+
+Constraints: 
+1 ≤ T ≤ 10 
+0 ≤ A ≤ B ≤ 105
+
+Sample Input(Plaintext Link)
+ 2
+10 13
+20 30
+Sample Output(Plaintext Link)
+ 1
+1
+
+
+Solution:
+/* IMPORTANT: class must not be public. */
+
+/*
+ * uncomment this if you want to read input.
+ */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        /*
+         * Read input from stdin and provide input before running
+		 */
+		 
+       
+        
+
+        //parsing the values to Integer
+       
+
+		 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        int N = Integer.parseInt(line);
+        int a,b;
+        int count=0;
+        
+        for (int i = 0; i < N; i++) {
+        
+        String line2= br.readLine();
+        
+        String[] s=  line2.split(" ");
+	
+         	//a=sc.nextInt();
+        //	b=sc.nextInt();
+    
+        	
+        	a= Integer.parseInt(s[0]);
+        	b= Integer.parseInt(s[1]);
+        
+        	count =0;
+        
+        	for(int j = a; j<=b;j++)
+         		{
+         		if(palindrome(j))
+         		count++;
+         		}
+         	
+         	System.out.println(count);
+         	
+        }
+        
+        }
+ 
+       
+       public static boolean palindrome(int a)
+       {
+       		String s = "";
+       		int p =a;
+       		if(a==0)
+	           			return true;
+       		while(a>0)
+       		{
+       			int n = a%10;
+       			s = s + n;
+       			a=a/10;
+       			
+       			
+       		}
+       		
+       		if(p==Integer.parseInt(s))
+       		return true;
+       		else
+       		return false;
+   
+       	
+       }
+
+       
+    }
+
