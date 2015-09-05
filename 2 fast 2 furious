@@ -1,0 +1,91 @@
+Problem Statement: 
+Dom and Brian were trying to evade the truck drivers of Verone's gang. They were too fast, too furious for them, and could get away from the truck drivers easily. They decided to race with each other, and divided the city into N checkpoints for the same. Mia was monitoring Dom and Brian throughout the race and she noted down their speeds at every checkpoint.
+
+Roman was jobless, as usual, and told Mia that Dom would definitely have the maximum change in speed between any two consecutive checkpoints. Mia, disagreed with him and challenged him that Brian would have maximum change in speed.
+
+Help Mia and Roman to find out who has the maximum change in speed between any two consecutive checkpoints - Dom or Brian.
+Note: Both negative and positive changes have to be considered. Hence, absolute value of maximum change in speed is to be considered.
+
+Input:
+First line contains a positive integer N - total number of checkpoints
+Second line contains N space-separated integers - ai - the speeds of Dom's car at each checkpoint.
+Third line contains N space-separated integers - bi - the speeds of Brian's car at each checkpoint.
+
+Output:
+Print who had the maximum change in speed between 2 consecutive checkpoints - Dom or Brian.
+If both have equal maximum change in speed, print "Tie". 
+Print a single integer on a new line - the maximum absolute change in speed between 2 consecutive checkpoints.
+
+Constraints:
+2 ≤ N ≤ 106 
+-109 ≤ ai ≤ 109
+
+Solution:
+
+
+
+import java.util.Scanner;
+
+public class test {
+	
+	
+	public static void main(String[]args)
+	{
+		Scanner sc=new Scanner(System.in);
+        int n,i;
+        n=sc.nextInt();
+        int[]domspeed=new int[n];
+        int[]brianspeed=new int[n];
+        for(i=0;i<n;i++)
+        	domspeed[i]=sc.nextInt();
+       	for(i=0;i<n;i++)
+       		brianspeed[i]=sc.nextInt();
+        int maxDom=0;
+        int maxBrian=0;
+        int checkpointDom=0;
+        int temp=0, temp2=0;
+        int checkpointBrian=0;
+        
+        for(int x = 0;x < n;x++){
+    		
+        	if(x==0)
+        	temp =domspeed[0];
+        	
+        	int speed = domspeed[x];
+            
+            checkpointDom = Math.abs(speed-temp);
+            
+            if(checkpointDom>maxDom)
+         	   maxDom = checkpointDom;
+            	temp=speed;
+        	}
+       	
+       	
+        for(int x = 0;x < n;x++){
+          	if(x==0)
+          	temp2 =brianspeed[0];
+          	int speed = brianspeed[x];
+          	checkpointBrian = Math.abs(speed-temp2);              
+              if(checkpointBrian>maxBrian)
+           	   maxBrian = checkpointBrian;
+              temp2=speed;
+
+        }
+      
+        if(maxDom==maxBrian)
+        	System.out.println("Tie");
+        else if(maxDom>maxBrian)
+        {	System.out.println("Dom" );
+        	System.out.println(maxDom);
+        }
+        else
+        {
+        System.out.println("Brian");
+        
+        	System.out.println(maxBrian);
+        }
+	}
+	
+	
+}
+
