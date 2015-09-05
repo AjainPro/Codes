@@ -1,0 +1,80 @@
+There is a new magician in town. His trick is known as "Find the Ring".
+
+He puts 3 glasses at 3 spots on the table, labeling them as 0, 1 and 2. Now, he hides a ring under one of the glasses. The glasses are opaque and placed upside down, so that the ring is not visible to the audience.
+
+Now, he begins to make certain swaps in between adjacent glasses, i.e. the glass at position 0 can be swapped with that at position 1, and the glass at position 2 can be swapped with glass at 1.
+
+Assuming that all swaps are done randomly with equal probability of 50%, you have to find index of the glass that is most likely to have the ring, at the end. In case of a tie, choose the one with lower index.
+
+Assume that the glass containing the ring was swapped exactly N times.
+
+Input:
+
+The first line contains an integer T, denoting the number of test cases. Each of the following T lines contain two space separated integers, index and N. index is index of glass that initially contains the ring and N is the total number of swaps involving the glass with ring.
+
+Output:
+
+For, each of the T test cases, output the corresponding answer in a new line.
+
+Constraints:
+
+1 <= T <= 100
+0 <= index <= 2
+0 <= N <= 10000
+
+Solution:
+
+#include <stdio.h>
+
+int main()
+{
+ 
+ 	int t ,i ,n,index=-1;
+ 	
+ 	scanf("%d",&t);
+ 	
+ 	while(t)
+ 	{
+ 		scanf("%d%d",&i,&n);
+ 		if(i==0)
+ 		{
+ 			if(n%2==0)
+ 			{
+ 				index=0;
+ 			}
+ 			else
+ 			{
+ 				index=1;
+ 			}
+ 		}
+ 		else if (i==1)
+ 		{
+ 			if(n%2==0)
+ 			{
+ 				index=1;
+ 			}
+ 			else
+ 			index=0;
+ 		}
+ 		else if(i==2)
+ 		{
+ 			if(n==0)
+ 			{
+ 				index=2;
+ 			}
+ 		else if (n%2==0)
+ 			{
+ 				index=0;
+ 			}
+ 			
+ 			else
+ 			index=1;
+ 		}
+ 		printf("%d",index);
+ 		printf("\n");
+ 		t--;
+ 	}
+
+     return 0;
+}
+
