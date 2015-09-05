@@ -1,0 +1,76 @@
+Bangalore City, where peace prevails most of the time. Not everyone is a huge fan of peace, though. Certainly not Mr. XYZ, whose identity is not known to us - yet. Mr. XYZ has somehow managed to bring vampires and zombies to Bangalore City to attack and destroy the city.
+
+Fatal Eagle, an ordinary citizen of the city is extremely worried on seeing his city being attacked by these weird creatures. But, as of now, he has no power to stop these creatures from their silent attacks. He wants to analyze these creatures firstly. He figured out some things about these creatures, like:
+
+Zombies have power in terms of an EVEN number.
+Vampires have power in terms of an ODD number.
+If he sees a zombie or a vampire, he marks them in his list with their power. After generating the entire list of power of these creatures, he decides to arrange this data in the following manner:
+
+All the zombies arranged in sorted manner of their power, followed by the total power of zombies.
+All the vampires arranged in sorted manner of their power, followed by the total power of vampires.
+You've to help him produce the following list to help him save his city.
+
+Input constraints:
+The first line of input will contain an integer — N, denoting the number of creatures. The next line will contain N integers denoting the elements of the list containing the power of zombies and vampires.
+
+Output constraints:
+Print the required list in a single line.
+
+Constraints:
+1 ≤ N ≤ 103
+1 ≤ Ni ≤ 103
+
+Solution:
+
+/* IMPORTANT: class must not be public. */
+
+/*
+ * uncomment this if you want to read input.
+*/
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Collections;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        /*
+         * Read input from stdin and provide input before running
+	*/
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        int N = Integer.parseInt(line);
+        ArrayList<Integer> even = new ArrayList<Integer>();
+        ArrayList<Integer>odd= new ArrayList<Integer>();
+        int evensum=0;
+        int oddsum =0;
+        	String line2= br.readLine();
+        	String[] str = line2.split(" ");
+        	for(int k=0; k<str.length;k++)
+        	{
+        		int num = Integer.parseInt(str[k]);
+        		if(num%2==0)
+        		{
+        			even.add(num);
+        			evensum = evensum+num;
+        		}
+        		else
+        		{
+        			odd.add(num);
+        			oddsum = oddsum + num;
+        		}
+        	}
+        	
+        	Collections.sort(even);
+        	Collections.sort(odd);
+        	
+        	for(int i =0; i<even.size();i++)
+        	System.out.print(even.get(i) + " ");
+        	System.out.print(evensum + " ");
+        	
+        	for(int i =0; i<odd.size();i++)
+        	System.out.print(odd.get(i) + " ");
+        	System.out.print(oddsum + " ");        
+    }
+}
+
