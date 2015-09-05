@@ -1,0 +1,90 @@
+Bob loves sorting very much. He is always thinking of new ways to sort an array.His friend Ram gives him a challenging task.He gives Bob an array and an integer K .The challenge is to produce the lexicographical minimal array after at most K-swaps.Only consecutive pairs of elements can be swapped.Help Bob in returning the lexicographical minimal array possible after at most K-swaps.
+
+Input:
+The first line contains an integer T i.e. the number of Test cases. T test cases follow. Each test case has 2 lines. The first line contains N(number of elements in array) and K(number of swaps).The second line contains n integers of the array.
+
+Output:
+Print the lexicographical minimal array.
+
+Constraints:
+
+1<=T<=10
+1<=N,K<=1000
+1<=A[i]<=1000000
+
+Solution:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+//using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace swapIt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int T, N, K;
+
+            T = Int32.Parse(Console.ReadLine()); // No of Test Cases
+
+            for (int I = 0; I < T; I++)
+            {
+
+                var numbers = from Match number in new Regex(@"\d+").Matches(Console.ReadLine())
+                              select int.Parse(number.Value);  // Here @\d is for int
+
+
+                N = numbers.ElementAt(0);// No of Elements in a array
+                K = numbers.ElementAt(1);// No of Swaps
+
+                int[] a = new int[N];
+              //  int[] swappedarray = new int[N];
+                var ArrayElements = from Match number in new Regex(@"\d+").Matches(Console.ReadLine())
+                                    select int.Parse(number.Value);
+                for (int j = 0; j < N; j++)
+                {
+                    a[j] = ArrayElements.ElementAt(j);
+
+                }
+
+                //swappedarray = swap(array, K);
+                int  k = K, pos;
+                for (int i = 0; i < a.Length; i++)
+                {
+                    pos = i;
+                    for (int j = i + 1; j < a.Length; j++)
+                    {
+
+                        if ((j - i) > k)
+                        {
+                            break;
+                        }
+                        if (a[j] < a[pos])
+                            pos = j;
+                    }
+
+                    for (int j = pos; j > i; j--)
+                    {
+                        a[j] = a[j - 1] + a[j];
+                        a[j - 1] = a[j] - a[j - 1];
+                        a[j] = a[j] - a[j - 1];
+
+                    }
+                    k = k- (pos - i);
+                }
+                for (int j = 0; j < a.Length; j++)
+                {
+                    Console.Write(a[j] + " ");
+
+                }
+                Console.WriteLine();
+            }
+        }
+	}
+
+}
+
