@@ -1,0 +1,47 @@
+Chandu is a bad student. Once his teacher asked him to print the reverse of a given string. He took three hours to solve it. The teacher got agitated at Chandu and asked you the same question. Can you solve it?
+
+Input:
+The first line contains an integer T, denoting the number of test cases.
+Each test case contains a string S, comprising of only lower case letters.
+
+Output:
+For each test case, print the reverse of the string S.
+
+Constraints:
+
+1 <= T <= 10
+1 <= |S| <= 30
+
+Solution:
+
+/* IMPORTANT: class must not be public. */
+
+/*
+ * uncomment this if you want to read input.
+ */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        /*
+         * Read input from stdin and provide input before running
+*/
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        int T = Integer.parseInt(line);
+        for (int k = 0; k < T; k++) {
+           String s = br.readLine();
+           
+           String reverse="";
+		
+		for(int i=s.length()-1;i>=0;i--)
+		{
+			reverse = reverse + s.charAt(i);	
+		}
+           System.out.println(reverse);
+        }
+    }
+}
+
